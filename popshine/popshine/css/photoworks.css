@@ -1,0 +1,158 @@
+/* ===== 全体 ===== */
+body {
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== ナビゲーション ===== */
+.nav {
+  position: relative;
+  max-width: 100%;
+  padding: 15px 20px;
+}
+
+/* ナビメニュー（PC表示） */
+.nav-menu {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: clamp(12px, 4vw, 30px);
+  padding: 0;
+  margin: 0 0 2rem;
+}
+
+/* ナビリンク */
+.nav a {
+  text-decoration: none;
+  letter-spacing: 1px;
+  font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+  color: #191970;
+  transition: 0.2s;
+}
+
+.nav a:hover {
+  opacity: 0.7;
+}
+
+/* ===== ハンバーガーボタン（画像版） ===== */
+.hamburger {
+  display: none; /* PCでは非表示 */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px; /* タップしやすく */
+}
+
+.hamburger img {
+  width: 32px;
+  height: 32px;
+  display: block;
+}
+
+/* ===== メイン ===== */
+main {
+  max-width: 100%;
+}
+
+/* =========================
+   レスポンシブ（768px以下）
+========================= */
+@media screen and (max-width: 768px) {
+  /* PC用ナビを非表示 */
+  /* .nav ul {
+    display: none;
+  } */
+
+  /* ハンバーガーアイコン表示 */
+  .hamburger {
+    display: block;
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    z-index: 1003;
+  }
+
+  /* フルスクリーンメニュー（閉） */
+  .nav-menu {
+    display: flex; /* ← display:none にしない */
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    background-color: rgba(25, 25, 112, 0.65);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-30px);
+
+    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s ease;
+
+    z-index: 1001;
+  }
+
+  /* 開いた状態 */
+  .nav-menu.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  /* メニュー中身 */
+  .nav-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+  }
+
+  .nav-menu li {
+    margin: 20px 0;
+  }
+
+  .nav-menu a {
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-decoration: none;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    transition: opacity 0.3s ease;
+  }
+
+  .nav-menu a:hover {
+    opacity: 0.7;
+  }
+}
+
+/* ===== ロゴ画像リンク用 ===== */
+.logo-link {
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.logo-link img {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.logo-link:hover img {
+  transform: scale(1.05);
+  opacity: 0.85;
+}
+
+.logo-link:active img {
+  transform: scale(0.98);
+}
